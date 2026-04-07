@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { deposit, getUser, fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
+import { SlashCommandBuilder } from "discord.js";
+import { logAudit } from "../../utils/audit.js";
+import { deposit, fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, rawAmount, reply }) => {
 	const user = await getUser(userId, guildId);
@@ -45,7 +45,7 @@ const run = async ({ userId, guildId, rawAmount, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "deposit",
 	aliases: ["dep"],
 	description: "Deposit raqs into your bank account.",

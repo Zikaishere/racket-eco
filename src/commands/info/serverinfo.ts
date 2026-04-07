@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
+import { SlashCommandBuilder } from "discord.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "serverinfo",
 	aliases: ["si", "server"],
 	description: "Display information about the current server.",

@@ -1,6 +1,6 @@
-const embed = require("../../utils/embed");
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "legacyconfig",
 	aliases: ["configlegacy"],
 	description: "Legacy config bridge command.",

@@ -1,8 +1,8 @@
-const { ChannelType, PermissionsBitField } = require("discord.js");
-const Guild = require("../models/Guild");
-const embed = require("../utils/embed");
-const { DEFAULT_PREFIX, DEV_LOG_CHANNEL_ID } = require("../config");
-const { buildSetupEmbed } = require("../utils/setupMessage");
+import { ChannelType, PermissionsBitField } from "discord.js";
+import { DEFAULT_PREFIX, DEV_LOG_CHANNEL_ID } from "../config.js";
+import Guild from "../models/guild.js";
+import embed from "../utils/embed.js";
+import { buildSetupEmbed } from "../utils/setupmessage.js";
 
 const PREFERRED_CHANNEL_NAMES = ["bot-commands", "bot", "commands", "general"];
 
@@ -46,7 +46,7 @@ async function findWelcomeChannel(guild) {
 	return preferredChannel || sendableChannels.first() || null;
 }
 
-module.exports = {
+export default {
 	name: "guildCreate",
 	async execute(guild, client) {
 		const guildData = await Guild.findOrCreate(guild.id);
@@ -93,8 +93,4 @@ module.exports = {
 		}
 	},
 };
-
-module.exports._test = {
-	canSendInChannel,
-	findWelcomeChannel,
-};
+export { canSendInChannel, findWelcomeChannel };

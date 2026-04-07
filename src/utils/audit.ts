@@ -1,4 +1,4 @@
-const AuditLog = require("../models/AuditLog");
+import AuditLog from "../models/auditlog.js";
 
 async function logAudit({
 	guildId = null,
@@ -24,4 +24,4 @@ async function logAudit({
 	}
 }
 
-module.exports = { logAudit };
+export { logAudit };

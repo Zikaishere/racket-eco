@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
+import { SlashCommandBuilder } from "discord.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 function getInventorySorted(user) {
 	return [...(user.inventory || [])]
@@ -97,7 +97,7 @@ const run = async ({ userId, guildId, query, quantity, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "inv-sell",
 	aliases: ["sellitem", "fence"],
 	description: "Sell an item from your inventory for cash.",

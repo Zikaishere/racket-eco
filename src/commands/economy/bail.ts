@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const { BAIL_BASE_COST, BAIL_COST_PER_MINUTE } = require("../../config");
+import { SlashCommandBuilder } from "discord.js";
+import { BAIL_BASE_COST, BAIL_COST_PER_MINUTE } from "../../config.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 function getBailCost(user) {
 	const wantedUntil = user.wantedUntil
@@ -67,7 +67,7 @@ const run = async ({ userId, guildId, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "bail",
 	aliases: ["clearwanted"],
 	description: "Pay a large bail to remove your wanted status.",

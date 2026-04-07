@@ -1,11 +1,12 @@
-const {
+import {
+	ActionRowBuilder,
 	SlashCommandBuilder,
 	StringSelectMenuBuilder,
 	StringSelectMenuOptionBuilder,
-	ActionRowBuilder,
-} = require("discord.js");
-const embed = require("../../utils/embed");
-const { DEFAULT_PREFIX, DEV_IDS } = require("../../config");
+} from "discord.js";
+import { DEFAULT_PREFIX, DEV_IDS } from "../../config.js";
+import Guild from "../../models/Guild.js";
+import embed from "../../utils/embed.js";
 
 const CATEGORY_ICONS = {
 	economy: "\uD83D\uDCB0",
@@ -123,7 +124,7 @@ function buildSelectMenu(client, currentCategory = null) {
 	);
 }
 
-module.exports = {
+export default {
 	name: "help",
 	aliases: ["h", "commands"],
 	description: "Browse all available commands.",
@@ -159,23 +160,21 @@ module.exports = {
 				!(cmd.category === "dev" && !DEV_IDS.includes(message.author.id))
 			) {
 				const icon = CATEGORY_ICONS[cmd.category] || "\uD83D\uDCC1";
-				const e = embed
-					.info(`${icon} ${cmd.name}`, cmd.description)
-					.addFields(
-						{
-							name: "Usage",
-							value: `\`${prefix}${cmd.name}${cmd.usage ? ` ${cmd.usage}` : ""}\``,
-							inline: true,
-						},
-						{ name: "Category", value: cmd.category, inline: true },
-						{
-							name: "Aliases",
-							value: cmd.aliases?.length
-								? cmd.aliases.map((alias) => `\`${alias}\``).join(", ")
-								: "None",
-							inline: true,
-						},
-					);
+				const e = embed.info(`${icon} ${cmd.name}`, cmd.description).addFields(
+					{
+						name: "Usage",
+						value: `\`${prefix}${cmd.name}${cmd.usage ? ` ${cmd.usage}` : ""}\``,
+						inline: true,
+					},
+					{ name: "Category", value: cmd.category, inline: true },
+					{
+						name: "Aliases",
+						value: cmd.aliases?.length
+							? cmd.aliases.map((alias) => `\`${alias}\``).join(", ")
+							: "None",
+						inline: true,
+					},
+				);
 				return message.reply({ embeds: [e] });
 			}
 
@@ -215,8 +214,9 @@ module.exports = {
 	},
 
 	async executeSlash({ interaction, client }) {
+		const Guild = await import("../../models/Guild.js");
 		const guildData = interaction.guildId
-			? await require("../../models/Guild").findOrCreate(interaction.guildId)
+			? await Guild.default.findOrCreate(interaction.guildId)
 			: null;
 		const prefix = guildData?.prefix || DEFAULT_PREFIX;
 		const query = interaction.options.getString("command")?.toLowerCase();
@@ -238,23 +238,21 @@ module.exports = {
 				!(cmd.category === "dev" && !DEV_IDS.includes(interaction.user.id))
 			) {
 				const icon = CATEGORY_ICONS[cmd.category] || "\uD83D\uDCC1";
-				const e = embed
-					.info(`${icon} ${cmd.name}`, cmd.description)
-					.addFields(
-						{
-							name: "Usage",
-							value: `\`${prefix}${cmd.name}${cmd.usage ? ` ${cmd.usage}` : ""}\``,
-							inline: true,
-						},
-						{ name: "Category", value: cmd.category, inline: true },
-						{
-							name: "Aliases",
-							value: cmd.aliases?.length
-								? cmd.aliases.map((alias) => `\`${alias}\``).join(", ")
-								: "None",
-							inline: true,
-						},
-					);
+				const e = embed.info(`${icon} ${cmd.name}`, cmd.description).addFields(
+					{
+						name: "Usage",
+						value: `\`${prefix}${cmd.name}${cmd.usage ? ` ${cmd.usage}` : ""}\``,
+						inline: true,
+					},
+					{ name: "Category", value: cmd.category, inline: true },
+					{
+						name: "Aliases",
+						value: cmd.aliases?.length
+							? cmd.aliases.map((alias) => `\`${alias}\``).join(", ")
+							: "None",
+						inline: true,
+					},
+				);
 				return interaction.reply({ embeds: [e], ephemeral: true });
 			}
 

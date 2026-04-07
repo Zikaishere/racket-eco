@@ -1,11 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const {
-	parseMentionTarget,
-	handleSetField,
-} = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleSetField, parseMentionTarget } from "../../utils/admintools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "setbank",
 	aliases: [],
 	description: "Set a user's bank balance.",

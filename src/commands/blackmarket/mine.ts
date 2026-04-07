@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const BlackMarket = require("../../models/BlackMarket");
-const { fmt } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import BlackMarket from "../../models/BlackMarket.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, reply }) => {
 	const listings = await BlackMarket.find({
@@ -44,7 +44,7 @@ const run = async ({ userId, guildId, reply }) => {
 	return reply({ embeds: [marketEmbed] });
 };
 
-module.exports = {
+export default {
 	name: "bm-mine",
 	aliases: ["bmmine", "mylistings"],
 	description: "View your active black market listings.",

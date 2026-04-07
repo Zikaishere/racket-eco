@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { buildAuditEmbed } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { buildAuditEmbed } from "../../utils/admintools.js";
 
-module.exports = {
+export default {
 	name: "auditlog",
 	aliases: ["audit"],
 	description: "View recent audit entries for this server.",

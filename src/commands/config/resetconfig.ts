@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { resetConfig } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { resetConfig } from "../../utils/configtools.js";
 
-module.exports = {
+export default {
 	name: "resetconfig",
 	aliases: ["cfgreset"],
 	description: "Reset this server's bot configuration to defaults.",

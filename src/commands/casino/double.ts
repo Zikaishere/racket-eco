@@ -1,14 +1,14 @@
-const {
-	SlashCommandBuilder,
+import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-} = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt, recordGame } = require("../../utils/economy");
-const CasinoManager = require("../../handlers/CasinoManager");
-const { reserveFunds, settleReservation } = require("../../utils/gameFunds");
-const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
+	SlashCommandBuilder,
+} from "discord.js";
+import { CASINO_MAX_BET, CASINO_MIN_BET } from "../../config.js";
+import CasinoManager from "../../handlers/casinomanager.js";
+import { fmt, getUser, recordGame } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
+import { reserveFunds, settleReservation } from "../../utils/gamefunds.js";
 
 const activeGames = new Map();
 
@@ -197,7 +197,7 @@ const handleTake = async (interaction) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "double",
 	aliases: ["don"],
 	description: "Play Double or Nothing. Risk it all for big chips!",

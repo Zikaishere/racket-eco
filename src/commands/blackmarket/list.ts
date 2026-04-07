@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const BlackMarket = require("../../models/BlackMarket");
-const { logAudit } = require("../../utils/audit");
-const {
+import { SlashCommandBuilder } from "discord.js";
+import {
+	BLACKMARKET_EXPIRY,
 	BLACKMARKET_LISTING_FEE,
 	BLACKMARKET_MAX_LISTINGS,
-	BLACKMARKET_EXPIRY,
-} = require("../../config");
+} from "../../config.js";
+import BlackMarket from "../../models/blackmarket.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const parsePrefixArgs = (args) => {
 	const price = parseInt(args[0], 10);
@@ -135,7 +135,7 @@ const run = async ({
 	});
 };
 
-module.exports = {
+export default {
 	name: "bm-list",
 	aliases: ["bmlist", "bmsell"],
 	description: "List an item on the Black Market.",

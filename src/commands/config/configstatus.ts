@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { buildStatusEmbed, getGuildConfig } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { buildStatusEmbed, getGuildConfig } from "../../utils/configtools.js";
 
-module.exports = {
+export default {
 	name: "configstatus",
 	aliases: ["cfgstatus"],
 	description: "View the current bot configuration for this server.",

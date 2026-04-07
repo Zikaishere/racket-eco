@@ -1,17 +1,18 @@
-const fs = require("node:fs");
-const path = require("node:path");
+import fs from "node:fs";
+import path from "node:path";
 
 class EventHandler {
 	constructor(client) {
 		this.client = client;
 	}
 
-	load() {
+	async load() {
 		const eventsPath = path.join(__dirname, "../events");
 		const files = fs.readdirSync(eventsPath).filter((f) => f.endsWith(".js"));
 
 		for (const file of files) {
-			const event = require(path.join(eventsPath, file));
+			const eventModule = await import(path.join(eventsPath, file));
+			const event = eventModule.default || eventModule;
 
 			if (!event.name) {
 				console.warn(`⚠️  Event ${file} is missing a name, skipping.`);
@@ -33,4 +34,4 @@ class EventHandler {
 	}
 }
 
-module.exports = EventHandler;
+export default EventHandler;

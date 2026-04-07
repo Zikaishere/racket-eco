@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const { TAX_RATE, TAX_THRESHOLD, EVADE_FINE_RATE } = require("../../config");
+import { SlashCommandBuilder } from "discord.js";
+import { EVADE_FINE_RATE, TAX_RATE, TAX_THRESHOLD } from "../../config.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, action, rawAmount, evade, reply }) => {
 	const user = await getUser(userId, guildId);
@@ -165,7 +165,7 @@ const run = async ({ userId, guildId, action, rawAmount, evade, reply }) => {
 	}
 };
 
-module.exports = {
+export default {
 	name: "cashier",
 	aliases: ["exchange"],
 	description: "Buy or cash out casino chips with your raqs.",

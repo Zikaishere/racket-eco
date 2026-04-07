@@ -1,14 +1,14 @@
-const Guild = require("../models/Guild");
-const User = require("../models/User");
-const embed = require("../utils/embed");
-const { DEFAULT_PREFIX, DEV_PREFIX, DEV_IDS } = require("../config");
-const {
+import { DEFAULT_PREFIX, DEV_IDS, DEV_PREFIX } from "../config.js";
+import Guild from "../models/guild.js";
+import User from "../models/user.js";
+import {
 	getDisabledCommandReason,
 	isRestrictedCategory,
-} = require("../utils/commandAccess");
-const { logError, buildUserErrorEmbed } = require("../utils/errorManager");
+} from "../utils/commandaccess.js";
+import embed from "../utils/embed.js";
+import { buildUserErrorEmbed, logError } from "../utils/errormanager.js";
 
-module.exports = {
+export default {
 	name: "messageCreate",
 	async execute(message, client) {
 		if (message.author.bot) return;

@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const BlackMarket = require("../../models/BlackMarket");
-const { fmt } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import BlackMarket from "../../models/BlackMarket.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const PAGE_SIZE = 8;
 
@@ -58,7 +58,7 @@ const run = async ({ guildId, page, reply }) => {
 	return reply({ embeds: [marketEmbed] });
 };
 
-module.exports = {
+export default {
 	name: "bm-browse",
 	aliases: ["bmbrowse", "bmshop", "market"],
 	description: "Browse current Black Market listings.",

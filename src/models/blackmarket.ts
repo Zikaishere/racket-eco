@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const listingSchema = new mongoose.Schema({
 	guildId: { type: String, required: true },
@@ -15,4 +15,4 @@ const listingSchema = new mongoose.Schema({
 
 listingSchema.index({ guildId: 1, sold: 1, expiresAt: 1 });
 
-module.exports = mongoose.model("BlackMarket", listingSchema);
+export default mongoose.model("BlackMarket", listingSchema);

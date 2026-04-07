@@ -1,7 +1,7 @@
-const embed = require("../../utils/embed");
-const ErrorLog = require("../../models/ErrorLog");
+import ErrorLog from "../../models/ErrorLog.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "errorlookup",
 	aliases: ["errlookup", "finderror"],
 	description: "Look up a logged error by its error ID.",

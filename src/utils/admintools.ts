@@ -1,9 +1,9 @@
-const embed = require("./embed");
-const { getUser, fmt } = require("./economy");
-const Guild = require("../models/Guild");
-const User = require("../models/User");
-const AuditLog = require("../models/AuditLog");
-const { logAudit } = require("./audit");
+import AuditLog from "../models/auditlog.js";
+import Guild from "../models/guild.js";
+import User from "../models/user.js";
+import { logAudit } from "./audit.js";
+import { fmt, getUser } from "./economy.js";
+import embed from "./embed.js";
 
 const FEATURE_CHOICES = [
 	{ name: "Casino", value: "casino" },
@@ -254,18 +254,18 @@ function buildAdminOverviewEmbed(prefix) {
 		);
 }
 
-module.exports = {
-	FEATURE_CHOICES,
-	parseMentionTarget,
-	buildStatusEmbed,
+export {
+	buildAdminOverviewEmbed,
 	buildAuditEmbed,
+	buildStatusEmbed,
+	FEATURE_CHOICES,
+	handleFeature,
+	handleFreeze,
 	handleGive,
-	handleTake,
-	handleSetField,
 	handleReset,
 	handleResetAll,
-	handleFreeze,
+	handleSetField,
+	handleTake,
 	handleUnfreeze,
-	handleFeature,
-	buildAdminOverviewEmbed,
+	parseMentionTarget,
 };

@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("discord.js");
-const mongoose = require("mongoose");
-const embed = require("../../utils/embed");
-const { fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const User = require("../../models/User");
-const BlackMarket = require("../../models/BlackMarket");
+import { SlashCommandBuilder } from "discord.js";
+import mongoose from "mongoose";
+import BlackMarket from "../../models/BlackMarket.js";
+import User from "../../models/User.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const addInventoryItem = (inventory, listing, quantity) => {
 	const existing = inventory.find(
@@ -200,7 +200,7 @@ const run = async ({ userId, guildId, listingId, quantity, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "bm-buy",
 	aliases: ["bmbuy"],
 	description: "Buy a listing from the Black Market.",

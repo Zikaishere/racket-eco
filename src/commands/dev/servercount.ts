@@ -1,6 +1,6 @@
-const embed = require("../../utils/embed");
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "servercount",
 	aliases: ["guildcount", "servers"],
 	description: "Show how many servers the bot is currently in.",

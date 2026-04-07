@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const User = require("../../models/User");
-const { fmt } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import User from "../../models/User.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const TYPES = {
 	balance: { field: "balance", label: "Server Leaderboard" },
@@ -48,7 +48,7 @@ const run = async ({ guildId, type, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "leaderboard",
 	aliases: ["lb", "top", "richest"],
 	description:

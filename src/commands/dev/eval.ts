@@ -1,5 +1,5 @@
-const util = require("node:util");
-const embed = require("../../utils/embed");
+import util from "node:util";
+import embed from "../../utils/embed.js";
 
 function sanitizeOutput(value) {
 	let text =
@@ -21,7 +21,7 @@ function sanitizeOutput(value) {
 	return text;
 }
 
-module.exports = {
+export default {
 	name: "eval",
 	aliases: ["evaluate"],
 	description: "Evaluate JavaScript in the current bot context.",

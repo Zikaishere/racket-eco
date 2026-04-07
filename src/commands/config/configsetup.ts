@@ -1,9 +1,9 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { DEFAULT_PREFIX } = require("../../config");
-const { buildSetupEmbed } = require("../../utils/setupMessage");
-const { getGuildConfig } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { DEFAULT_PREFIX } from "../../config.js";
+import { getGuildConfig } from "../../utils/configtools.js";
+import { buildSetupEmbed } from "../../utils/setupmessage.js";
 
-module.exports = {
+export default {
 	name: "configsetup",
 	aliases: ["setupguide"],
 	description: "Show the setup guide for this server.",

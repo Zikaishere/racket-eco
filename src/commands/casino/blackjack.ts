@@ -1,18 +1,18 @@
-const {
-	SlashCommandBuilder,
+import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-} = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt, recordGame } = require("../../utils/economy");
-const CasinoManager = require("../../handlers/CasinoManager");
-const {
-	reserveFunds,
+	SlashCommandBuilder,
+} from "discord.js";
+import { CASINO_MAX_BET, CASINO_MIN_BET } from "../../config.js";
+import CasinoManager from "../../handlers/casinomanager.js";
+import { fmt, getUser, recordGame } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
+import {
 	refundReservation,
+	reserveFunds,
 	settleReservationsByGameKey,
-} = require("../../utils/gameFunds");
-const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
+} from "../../utils/gamefunds.js";
 
 const SUITS = ["♠️", "♥️", "♣️", "♦️"];
 const RANKS = [
@@ -516,7 +516,7 @@ const handleButton = async (interaction) => {
 	}
 };
 
-module.exports = {
+export default {
 	name: "blackjack",
 	aliases: ["bj", "21"],
 	description: "Create a multiplayer Blackjack table.",

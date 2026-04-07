@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { setCommandState } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { setCommandState } from "../../utils/configTools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "togglecommand",
 	aliases: ["commandtoggle"],
 	description: "Enable or disable an individual command in this server.",

@@ -1,24 +1,24 @@
-const {
-	SlashCommandBuilder,
+import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-} = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const Crew = require("../../models/Crew");
-const {
-	reserveFunds,
-	refundReservations,
-	settleReservationsByGameKey,
-} = require("../../utils/gameFunds");
-const {
-	HEIST_MIN_PLAYERS,
+	SlashCommandBuilder,
+} from "discord.js";
+import {
 	HEIST_JOIN_WINDOW,
-	HEIST_MIN_BET,
 	HEIST_MAX_BET,
+	HEIST_MIN_BET,
+	HEIST_MIN_PLAYERS,
 	WANTED_DURATION,
-} = require("../../config");
+} from "../../config.js";
+import Crew from "../../models/Crew.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
+import {
+	refundReservations,
+	reserveFunds,
+	settleReservationsByGameKey,
+} from "../../utils/gameFunds.js";
 
 const activeHeists = new Map();
 const HEIST_TARGETS = [
@@ -718,7 +718,7 @@ const run = async ({ userId, guildId, username, bet, reply, client }) => {
 	scheduleLaunch(heist, client);
 };
 
-module.exports = {
+export default {
 	name: "heist",
 	aliases: ["raid"],
 	description: "Plan a heist and invite others to join your crew.",

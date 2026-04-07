@@ -1,5 +1,5 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import embed from "../../utils/embed.js";
 
 function buildRulesEmbed() {
 	return embed
@@ -46,7 +46,7 @@ function buildRulesEmbed() {
 		);
 }
 
-module.exports = {
+export default {
 	name: "rules",
 	aliases: ["guidelines", "serverrules"],
 	description: "Post the server rules embed in the current channel.",

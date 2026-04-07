@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { parseMentionTarget, handleReset } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleReset, parseMentionTarget } from "../../utils/admintools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "resetuser",
 	aliases: ["userreset"],
 	description: "Reset one user's wallet, bank, and chips.",

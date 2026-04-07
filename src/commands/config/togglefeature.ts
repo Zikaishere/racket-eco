@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { FEATURE_CHOICES, setFeature } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { FEATURE_CHOICES, setFeature } from "../../utils/configTools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "togglefeature",
 	aliases: ["featuretoggle"],
 	description: "Enable or disable a full feature in this server.",

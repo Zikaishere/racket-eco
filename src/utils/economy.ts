@@ -1,9 +1,5 @@
-const User = require("../models/User");
-const {
-	CURRENCY_SYMBOL,
-	CURRENCY_NAME,
-	RANK_THRESHOLDS,
-} = require("../config");
+import { CURRENCY_NAME, CURRENCY_SYMBOL, RANK_THRESHOLDS } from "../config.js";
+import User from "../models/user.js";
 
 function fmt(amount) {
 	return `${CURRENCY_SYMBOL} **${Number(amount || 0).toLocaleString()}** ${CURRENCY_NAME}`;
@@ -146,17 +142,17 @@ async function recordGame(userId, guildId, won, wagered) {
 	await user.save();
 }
 
-module.exports = {
-	fmt,
+export {
 	addBalance,
-	removeBalance,
-	deposit,
-	withdraw,
 	addChips,
-	removeChips,
-	transfer,
+	deposit,
+	fmt,
 	getUser,
 	hasBalance,
 	hasChips,
 	recordGame,
+	removeBalance,
+	removeChips,
+	transfer,
+	withdraw,
 };

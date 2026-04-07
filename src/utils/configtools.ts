@@ -1,8 +1,8 @@
-const embed = require("./embed");
-const Guild = require("../models/Guild");
-const { DEFAULT_PREFIX } = require("../config");
-const { buildSetupEmbed } = require("./setupMessage");
-const { logAudit } = require("./audit");
+import { DEFAULT_PREFIX } from "../config.js";
+import Guild from "../models/guild.js";
+import { logAudit } from "./audit.js";
+import embed from "./embed.js";
+import { buildSetupEmbed } from "./setupmessage.js";
 
 const FEATURE_CHOICES = [
 	{ name: "Casino", value: "casino" },
@@ -302,20 +302,20 @@ function buildConfigOverviewEmbed(prefix) {
 		);
 }
 
-module.exports = {
-	FEATURE_CHOICES,
-	CONFIG_CATEGORY_CHOICES,
-	PROTECTED_COMMANDS,
-	resolveCommand,
-	canToggleCommand,
-	getGuildConfig,
-	buildStatusEmbed,
+export {
 	buildCommandsEmbed,
-	postSetupGuide,
-	setPrefix,
-	setFeature,
-	setCommandState,
-	setAdminRole,
-	resetConfig,
 	buildConfigOverviewEmbed,
+	buildStatusEmbed,
+	CONFIG_CATEGORY_CHOICES,
+	canToggleCommand,
+	FEATURE_CHOICES,
+	getGuildConfig,
+	PROTECTED_COMMANDS,
+	postSetupGuide,
+	resetConfig,
+	resolveCommand,
+	setAdminRole,
+	setCommandState,
+	setFeature,
+	setPrefix,
 };

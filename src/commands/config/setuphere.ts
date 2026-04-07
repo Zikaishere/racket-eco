@@ -1,9 +1,9 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { DEFAULT_PREFIX } = require("../../config");
-const { postSetupGuide, getGuildConfig } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { DEFAULT_PREFIX } from "../../config.js";
+import { getGuildConfig, postSetupGuide } from "../../utils/configtools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "setuphere",
 	aliases: ["postsetup"],
 	description: "Post the setup guide in the current channel.",

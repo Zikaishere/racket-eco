@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt, recordGame } = require("../../utils/economy");
-const CasinoManager = require("../../handlers/CasinoManager");
-const {
+import { SlashCommandBuilder } from "discord.js";
+import { CASINO_MAX_BET, CASINO_MIN_BET } from "../../config.js";
+import CasinoManager from "../../handlers/casinomanager.js";
+import { fmt, getUser, recordGame } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
+import {
 	reserveFunds,
 	settleReservationsByGameKey,
-} = require("../../utils/gameFunds");
-const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
+} from "../../utils/gamefunds.js";
 
 const RED = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
 const _BLACK = [
@@ -215,7 +215,7 @@ const run = async ({
 	});
 };
 
-module.exports = {
+export default {
 	name: "roulette",
 	aliases: ["rou"],
 	description: "Bet on the active roulette table. Wheel spins every 30s.",

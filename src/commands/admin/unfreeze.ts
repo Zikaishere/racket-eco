@@ -1,11 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const {
-	parseMentionTarget,
-	handleUnfreeze,
-} = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleUnfreeze, parseMentionTarget } from "../../utils/admintools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "unfreeze",
 	aliases: [],
 	description: "Remove a user's freeze status.",

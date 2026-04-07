@@ -47,5 +47,4 @@ class CasinoManager {
 	}
 }
 
-// Singleton export
-module.exports = new CasinoManager();
+export default new CasinoManager();

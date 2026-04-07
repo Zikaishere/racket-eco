@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const crewSchema = new mongoose.Schema({
 	guildId: { type: String, required: true },
@@ -12,4 +12,4 @@ const crewSchema = new mongoose.Schema({
 crewSchema.index({ guildId: 1, name: 1 }, { unique: true });
 crewSchema.index({ guildId: 1, leaderId: 1 }, { unique: true });
 
-module.exports = mongoose.model("Crew", crewSchema);
+export default mongoose.model("Crew", crewSchema);

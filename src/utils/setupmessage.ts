@@ -1,7 +1,7 @@
-const embed = require("./embed");
-const { DEFAULT_PREFIX } = require("../config");
+import { DEFAULT_PREFIX } from "../config.js";
+import embed from "./embed.js";
 
-function buildSetupEmbed(prefix = DEFAULT_PREFIX) {
+export function buildSetupEmbed(prefix = DEFAULT_PREFIX) {
 	return embed
 		.raw(0xe63946)
 		.setTitle("Thanks for adding Racket")
@@ -52,5 +52,3 @@ function buildSetupEmbed(prefix = DEFAULT_PREFIX) {
 			},
 		);
 }
-
-module.exports = { buildSetupEmbed };

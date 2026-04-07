@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
+import { SlashCommandBuilder } from "discord.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "ping",
 	aliases: ["latency", "pong"],
 	description: "Check the bot's latency.",
@@ -35,7 +35,7 @@ module.exports = {
 function buildEmbed(latency, wsLatency) {
 	const color = latency < 100 ? 0x2dc653 : latency < 200 ? 0xffb703 : 0xff6b6b;
 	const indicator = latency < 100 ? "🟢" : latency < 200 ? "🟡" : "🔴";
-	return require("../../utils/embed")
+	return embed
 		.raw(color)
 		.setTitle("🏓 Pong!")
 		.addFields(

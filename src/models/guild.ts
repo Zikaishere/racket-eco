@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const guildSchema = new mongoose.Schema({
 	guildId: { type: String, required: true, unique: true },
@@ -24,4 +24,4 @@ guildSchema.statics.findOrCreate = async function (guildId) {
 	return guild;
 };
 
-module.exports = mongoose.model("Guild", guildSchema);
+export default mongoose.model("Guild", guildSchema);

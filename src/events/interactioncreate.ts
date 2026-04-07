@@ -1,13 +1,13 @@
-const Guild = require("../models/Guild");
-const User = require("../models/User");
-const embed = require("../utils/embed");
-const {
+import Guild from "../models/guild.js";
+import User from "../models/user.js";
+import {
 	getDisabledCommandReason,
 	isRestrictedCategory,
-} = require("../utils/commandAccess");
-const { logError, buildUserErrorEmbed } = require("../utils/errorManager");
+} from "../utils/commandaccess.js";
+import embed from "../utils/embed.js";
+import { buildUserErrorEmbed, logError } from "../utils/errormanager.js";
 
-module.exports = {
+export default {
 	name: "interactionCreate",
 	async execute(interaction, client) {
 		const guildData = interaction.guild

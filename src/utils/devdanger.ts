@@ -1,4 +1,4 @@
-const crypto = require("node:crypto");
+import crypto from "node:crypto";
 
 const pendingDbWipes = new Map();
 const CONFIRMATION_WINDOW_MS = 2 * 60 * 1000;
@@ -27,9 +27,9 @@ function clearDbWipeRequest(userId) {
 	pendingDbWipes.delete(userId);
 }
 
-module.exports = {
+export {
 	CONFIRMATION_WINDOW_MS,
+	clearDbWipeRequest,
 	createDbWipeRequest,
 	getDbWipeRequest,
-	clearDbWipeRequest,
 };

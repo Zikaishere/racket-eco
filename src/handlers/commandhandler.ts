@@ -1,6 +1,6 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { Collection, REST, Routes } = require("discord.js");
+import fs from "node:fs";
+import path from "node:path";
+import { Collection, REST, Routes } from "discord.js";
 
 class CommandHandler {
 	constructor(client) {
@@ -10,7 +10,7 @@ class CommandHandler {
 		client.categories = client.categories || new Map(); // category -> command names
 	}
 
-	load() {
+	async load() {
 		const commandsPath = path.join(__dirname, "../commands");
 		const categories = fs.readdirSync(commandsPath);
 
@@ -24,7 +24,8 @@ class CommandHandler {
 			const categoryCommands = [];
 
 			for (const file of files) {
-				const command = require(path.join(categoryPath, file));
+				const commandModule = await import(path.join(categoryPath, file));
+				const command = commandModule.default || commandModule;
 
 				// Validate command structure
 				if (!command.name) {
@@ -77,4 +78,4 @@ class CommandHandler {
 	}
 }
 
-module.exports = CommandHandler;
+export default CommandHandler;

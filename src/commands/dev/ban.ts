@@ -1,8 +1,8 @@
-const embed = require("../../utils/embed");
-const User = require("../../models/User");
-const { logAudit } = require("../../utils/audit");
+import User from "../../models/User.js";
+import { logAudit } from "../../utils/audit.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "ban",
 	aliases: [],
 	description: "Globally ban a user from economy and game systems.",

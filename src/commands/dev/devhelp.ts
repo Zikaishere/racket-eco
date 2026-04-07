@@ -1,6 +1,6 @@
-const embed = require("../../utils/embed");
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "devhelp",
 	aliases: [],
 	description: "Show available dev-only commands.",

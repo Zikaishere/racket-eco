@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { setAdminRole } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { setAdminRole } from "../../utils/configtools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "adminrole",
 	aliases: ["configrole"],
 	description: "Add or remove an admin role for bot management.",

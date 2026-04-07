@@ -1,13 +1,13 @@
-const embed = require("../../utils/embed");
-const { DEV_IDS, DEV_PREFIX } = require("../../config");
-const {
-	createDbWipeRequest,
+import { DEV_IDS, DEV_PREFIX } from "../../config.js";
+import {
 	CONFIRMATION_WINDOW_MS,
-} = require("../../utils/devDanger");
+	createDbWipeRequest,
+} from "../../utils/devDanger.js";
+import embed from "../../utils/embed.js";
 
 const OWNER_ID = DEV_IDS[0];
 
-module.exports = {
+export default {
 	name: "dbwipe",
 	aliases: ["deletedb"],
 	description: "Create a confirmation token for wiping the entire database.",

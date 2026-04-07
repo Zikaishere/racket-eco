@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const errorLogSchema = new mongoose.Schema({
 	errorId: { type: String, required: true, unique: true },
@@ -16,4 +16,4 @@ const errorLogSchema = new mongoose.Schema({
 
 errorLogSchema.index({ createdAt: -1 });
 
-module.exports = mongoose.model("ErrorLog", errorLogSchema);
+export default mongoose.model("ErrorLog", errorLogSchema);

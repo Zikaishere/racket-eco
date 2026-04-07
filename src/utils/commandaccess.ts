@@ -29,9 +29,9 @@ function getDisabledCommandReason(guildData, command) {
 	return null;
 }
 
-module.exports = {
-	getFeatureKey,
-	isRestrictedCategory,
-	isCommandDisabled,
+export {
 	getDisabledCommandReason,
+	getFeatureKey,
+	isCommandDisabled,
+	isRestrictedCategory,
 };

@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const {
+import { SlashCommandBuilder } from "discord.js";
+import {
 	ROB_COOLDOWN,
-	ROB_SUCCESS_RATE,
 	ROB_FINE_PERCENT,
 	ROB_MIN_BAL,
-} = require("../../config");
+	ROB_SUCCESS_RATE,
+} from "../../config.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, targetUser, reply }) => {
 	if (!targetUser)
@@ -108,7 +108,7 @@ const run = async ({ userId, guildId, targetUser, reply }) => {
 	return reply({ embeds: [embed.error(message)] });
 };
 
-module.exports = {
+export default {
 	name: "rob",
 	aliases: ["steal"],
 	description: "Try to rob raqs from another user.",

@@ -1,4 +1,4 @@
-const crypto = require("node:crypto");
+import crypto from "node:crypto";
 
 const STORE_ITEMS = {
 	alley_hen: {
@@ -85,10 +85,10 @@ function getChickenPower(chicken) {
 	);
 }
 
-module.exports = {
-	STORE_ITEMS,
-	listStoreItems,
-	getStoreItem,
+export {
 	createInventoryItemFromStore,
 	getChickenPower,
+	getStoreItem,
+	listStoreItems,
+	STORE_ITEMS,
 };

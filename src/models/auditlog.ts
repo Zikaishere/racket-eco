@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const auditLogSchema = new mongoose.Schema({
 	guildId: { type: String, default: null },
@@ -13,4 +13,4 @@ const auditLogSchema = new mongoose.Schema({
 
 auditLogSchema.index({ guildId: 1, action: 1, createdAt: -1 });
 
-module.exports = mongoose.model("AuditLog", auditLogSchema);
+export default mongoose.model("AuditLog", auditLogSchema);

@@ -1,6 +1,6 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { DEFAULT_PREFIX } = require("../../config");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { DEFAULT_PREFIX } from "../../config.js";
+import embed from "../../utils/embed.js";
 
 function buildInfoEmbed(prefix = DEFAULT_PREFIX) {
 	return embed
@@ -35,7 +35,7 @@ function buildInfoEmbed(prefix = DEFAULT_PREFIX) {
 		);
 }
 
-module.exports = {
+export default {
 	name: "info",
 	aliases: ["about"],
 	description: "Post the server info embed in the current channel.",

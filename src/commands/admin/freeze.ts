@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { parseMentionTarget, handleFreeze } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleFreeze, parseMentionTarget } from "../../utils/admintools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "freeze",
 	aliases: [],
 	description: "Freeze a user from economy and game usage.",

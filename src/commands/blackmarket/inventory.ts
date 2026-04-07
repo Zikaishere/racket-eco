@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import { getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const PAGE_SIZE = 12;
 
@@ -59,7 +59,7 @@ const run = async ({ userId, guildId, targetUser, page, reply }) => {
 	return reply({ embeds: [inventoryEmbed] });
 };
 
-module.exports = {
+export default {
 	name: "inventory",
 	aliases: ["inv", "items"],
 	description: "View your inventory or another user's inventory.",

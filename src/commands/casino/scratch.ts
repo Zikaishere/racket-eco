@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt, recordGame } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
+import { SlashCommandBuilder } from "discord.js";
+import { CASINO_MAX_BET, CASINO_MIN_BET } from "../../config.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser, recordGame } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const TIERS = [
 	{ name: "Bust", chance: 0.52, multiplier: 0, symbol: "💀" },
@@ -79,7 +79,7 @@ const run = async ({ userId, guildId, bet, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "scratch",
 	aliases: ["scratchcard"],
 	description: "Buy and reveal a scratch card for a quick casino hit.",

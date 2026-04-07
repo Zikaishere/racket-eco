@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { buildAdminOverviewEmbed } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { buildAdminOverviewEmbed } from "../../utils/admintools.js";
 
-module.exports = {
+export default {
 	name: "admin",
 	aliases: ["adm"],
 	description: "Show the standalone admin commands available in this server.",

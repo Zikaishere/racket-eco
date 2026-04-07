@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { DEFAULT_PREFIX } = require("../../config");
-const { buildConfigOverviewEmbed } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { DEFAULT_PREFIX } from "../../config.js";
+import { buildConfigOverviewEmbed } from "../../utils/configtools.js";
 
-module.exports = {
+export default {
 	name: "config",
 	aliases: ["settings"],
 	description: "Show the standalone configuration commands for this server.",

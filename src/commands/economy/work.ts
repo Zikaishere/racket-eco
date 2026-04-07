@@ -1,14 +1,14 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const User = require("../../models/User");
-const { fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const {
-	WORK_MIN,
-	WORK_MAX,
-	WORK_COOLDOWN,
+import { SlashCommandBuilder } from "discord.js";
+import {
 	WANTED_WORK_MULTIPLIER,
-} = require("../../config");
+	WORK_COOLDOWN,
+	WORK_MAX,
+	WORK_MIN,
+} from "../../config.js";
+import User from "../../models/User.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const JOBS = [
 	"dealt cards at the casino",
@@ -89,7 +89,7 @@ const run = async ({ userId, guildId, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "work",
 	aliases: ["hustle"],
 	description: "Work a job and earn some raqs.",

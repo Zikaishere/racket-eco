@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const os = require("node:os");
+import os from "node:os";
+import { version as discordJsVersion, SlashCommandBuilder } from "discord.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "botinfo",
 	aliases: ["bi", "about"],
 	description: "Display information about Racket.",
@@ -48,7 +48,7 @@ async function run({ client, reply }) {
 			{ name: "⚡ Node.js", value: process.version, inline: true },
 			{
 				name: "📦 discord.js",
-				value: `v${require("discord.js").version}`,
+				value: `v${discordJsVersion}`,
 				inline: true,
 			},
 			{ name: "🖥️ CPU", value: cpuModel, inline: false },

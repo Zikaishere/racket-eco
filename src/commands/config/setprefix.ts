@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { setPrefix } = require("../../utils/configTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { setPrefix } from "../../utils/configTools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "setprefix",
 	aliases: ["prefixset"],
 	description: "Change the bot prefix for this server.",

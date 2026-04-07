@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, targetUser, _client, reply }) => {
 	const user = await getUser(userId, guildId);
@@ -17,7 +17,7 @@ const run = async ({ userId, guildId, targetUser, _client, reply }) => {
 	return reply({ embeds: [e] });
 };
 
-module.exports = {
+export default {
 	name: "balance",
 	aliases: ["bal", "wallet"],
 	description: "Check your or someone else's balance.",

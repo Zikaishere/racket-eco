@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const { parseMentionTarget, handleGive } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleGive, parseMentionTarget } from "../../utils/adminTools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "give",
 	aliases: [],
 	description: "Give wallet money to a user.",

@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const Crew = require("../../models/Crew");
-const { logAudit } = require("../../utils/audit");
+import { SlashCommandBuilder } from "discord.js";
+import Crew from "../../models/crew.js";
+import { logAudit } from "../../utils/audit.js";
+import embed from "../../utils/embed.js";
 
 const MAX_CREW_SIZE = 8;
 
@@ -29,7 +29,7 @@ function buildCrewEmbed(crew) {
 		);
 }
 
-module.exports = {
+export default {
 	name: "crew",
 	aliases: ["gang"],
 	description: "Create and manage a permanent heist crew.",

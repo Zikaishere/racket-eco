@@ -1,5 +1,5 @@
-const PendingGame = require("../models/PendingGame");
-const User = require("../models/User");
+import PendingGame from "../models/pendinggame.js";
+import User from "../models/user.js";
 
 function getCurrencyField(currency) {
 	return currency === "chips" ? "chips" : "balance";
@@ -138,11 +138,11 @@ async function refundAllPendingGameFunds() {
 	return reservations.length;
 }
 
-module.exports = {
+export {
+	refundAllPendingGameFunds,
+	refundReservation,
+	refundReservations,
 	reserveFunds,
 	settleReservation,
 	settleReservationsByGameKey,
-	refundReservation,
-	refundReservations,
-	refundAllPendingGameFunds,
 };

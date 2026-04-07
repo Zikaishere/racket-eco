@@ -1,11 +1,11 @@
-require("dotenv").config();
-const { Client, GatewayIntentBits, Partials } = require("discord.js");
-const mongoose = require("mongoose");
-const CommandHandler = require("./handlers/CommandHandler.js");
-const EventHandler = require("./handlers/EventHandler.js");
-const { validateRequiredEnv } = require("./utils/startup.js");
-const { refundAllPendingGameFunds } = require("./utils/gameFunds.js");
-const { logError } = require("./utils/errorManager.js");
+import "dotenv/config";
+import { Client, GatewayIntentBits, Partials } from "discord.js";
+import mongoose from "mongoose";
+import CommandHandler from "./handlers/commandhandler.js";
+import EventHandler from "./handlers/eventhandler.js";
+import { logError } from "./utils/errormanager.js";
+import { refundAllPendingGameFunds } from "./utils/gamefunds.js";
+import { validateRequiredEnv } from "./utils/startup.js";
 
 const envErrors = validateRequiredEnv(process.env);
 if (envErrors.length) {

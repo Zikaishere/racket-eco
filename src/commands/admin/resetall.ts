@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const { handleResetAll } = require("../../utils/adminTools");
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { handleResetAll } from "../../utils/admintools.js";
 
-module.exports = {
+export default {
 	name: "resetall",
 	aliases: [],
 	description: "Reset every user's wallet, bank, and chips in this server.",

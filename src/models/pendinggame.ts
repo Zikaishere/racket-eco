@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const pendingGameSchema = new mongoose.Schema({
 	userId: { type: String, required: true },
@@ -18,4 +18,4 @@ pendingGameSchema.index(
 );
 pendingGameSchema.index({ gameKey: 1 });
 
-module.exports = mongoose.model("PendingGame", pendingGameSchema);
+export default mongoose.model("PendingGame", pendingGameSchema);

@@ -1,12 +1,12 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const {
-	CONFIG_CATEGORY_CHOICES,
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import {
 	buildCommandsEmbed,
+	CONFIG_CATEGORY_CHOICES,
 	getGuildConfig,
-} = require("../../utils/configTools");
+} from "../../utils/configtools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "configcommands",
 	aliases: ["cfgcommands"],
 	description: "List the commands that can be toggled in this server.",

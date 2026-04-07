@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
+import { SlashCommandBuilder } from "discord.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 function findInventoryEntry(inventory, query) {
 	if (!query) return null;
@@ -71,7 +71,7 @@ const run = async ({ userId, guildId, query, reply }) => {
 	return reply({ embeds: [detailsEmbed] });
 };
 
-module.exports = {
+export default {
 	name: "inv-inspect",
 	aliases: ["inspectitem", "iteminfo", "item"],
 	description: "Inspect an item in your inventory.",

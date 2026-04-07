@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const BlackMarket = require("../../models/BlackMarket");
-const { logAudit } = require("../../utils/audit");
+import { SlashCommandBuilder } from "discord.js";
+import BlackMarket from "../../models/BlackMarket.js";
+import { logAudit } from "../../utils/audit.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, listingId, reply }) => {
 	if (!listingId) {
@@ -61,7 +61,7 @@ const run = async ({ userId, guildId, listingId, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "bm-cancel",
 	aliases: ["bmcancel"],
 	description: "Cancel one of your active black market listings.",

@@ -1,4 +1,4 @@
-function validateRequiredEnv(env) {
+export function validateRequiredEnv(env) {
 	const required = ["BOT_TOKEN", "MONGO_URI"];
 	const errors = [];
 
@@ -18,5 +18,3 @@ function validateRequiredEnv(env) {
 
 	return errors;
 }
-
-module.exports = { validateRequiredEnv };

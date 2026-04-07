@@ -1,14 +1,11 @@
-const mongoose = require("mongoose");
-const embed = require("../../utils/embed");
-const { DEV_IDS, DEV_PREFIX } = require("../../config");
-const {
-	getDbWipeRequest,
-	clearDbWipeRequest,
-} = require("../../utils/devDanger");
+import mongoose from "mongoose";
+import { DEV_IDS, DEV_PREFIX } from "../../config.js";
+import { clearDbWipeRequest, getDbWipeRequest } from "../../utils/devDanger.js";
+import embed from "../../utils/embed.js";
 
 const OWNER_ID = DEV_IDS[0];
 
-module.exports = {
+export default {
 	name: "confirmdbwipe",
 	aliases: ["dbwipeconfirm"],
 	description: "Confirm and execute the full database wipe.",

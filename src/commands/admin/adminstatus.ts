@@ -1,11 +1,11 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const embed = require("../../utils/embed");
-const {
-	parseMentionTarget,
+import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import {
 	buildStatusEmbed,
-} = require("../../utils/adminTools");
+	parseMentionTarget,
+} from "../../utils/admintools.js";
+import embed from "../../utils/embed.js";
 
-module.exports = {
+export default {
 	name: "adminstatus",
 	aliases: ["astatus"],
 	description: "Inspect a user's economy and moderation state.",

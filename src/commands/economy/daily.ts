@@ -1,9 +1,9 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const User = require("../../models/User");
-const { fmt } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const { DAILY_AMOUNT, DAILY_COOLDOWN } = require("../../config");
+import { SlashCommandBuilder } from "discord.js";
+import { DAILY_AMOUNT, DAILY_COOLDOWN } from "../../config.js";
+import User from "../../models/User.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 const run = async ({ userId, guildId, reply }) => {
 	await User.findOrCreate(userId, guildId);
@@ -59,7 +59,7 @@ const run = async ({ userId, guildId, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "daily",
 	aliases: ["claim"],
 	description: "Claim your daily reward.",

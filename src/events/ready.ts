@@ -1,6 +1,6 @@
-const CommandHandler = require("../handlers/CommandHandler");
+import CommandHandler from "../handlers/commandhandler.js";
 
-module.exports = {
+export default {
 	name: "clientReady",
 	once: true,
 	async execute(client) {

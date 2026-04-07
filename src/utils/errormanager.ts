@@ -1,7 +1,7 @@
-const crypto = require("node:crypto");
-const embed = require("./embed");
-const ErrorLog = require("../models/ErrorLog");
-const { DEV_LOG_CHANNEL_ID } = require("../config");
+import crypto from "node:crypto";
+import { DEV_LOG_CHANNEL_ID } from "../config.js";
+import ErrorLog from "../models/errorlog.js";
+import embed from "./embed.js";
 
 function createErrorId() {
 	return `ERR-${crypto.randomBytes(4).toString("hex").toUpperCase()}`;
@@ -92,8 +92,4 @@ async function logError(error, context = {}, client = null) {
 	return errorId;
 }
 
-module.exports = {
-	buildUserErrorEmbed,
-	createErrorId,
-	logError,
-};
+export { buildUserErrorEmbed, createErrorId, logError };

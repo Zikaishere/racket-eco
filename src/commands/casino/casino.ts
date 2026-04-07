@@ -1,11 +1,11 @@
-const {
-	SlashCommandBuilder,
+import {
 	ActionRowBuilder,
+	SlashCommandBuilder,
 	StringSelectMenuBuilder,
-} = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt } = require("../../utils/economy");
-const CasinoManager = require("../../handlers/CasinoManager");
+} from "discord.js";
+import CasinoManager from "../../handlers/casinomanager.js";
+import { fmt, getUser } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
 
 function buildTablesSummary(guildId) {
 	const activeTables = CasinoManager.getActiveTables(guildId);
@@ -134,7 +134,7 @@ const run = async ({ userId, guildId, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "lobby",
 	aliases: ["casino"],
 	description: "Enter the interactive casino lobby.",

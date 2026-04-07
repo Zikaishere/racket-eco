@@ -1,9 +1,9 @@
-const { SlashCommandBuilder } = require("discord.js");
-const embed = require("../../utils/embed");
-const { getUser, fmt, recordGame } = require("../../utils/economy");
-const { logAudit } = require("../../utils/audit");
-const { getChickenPower } = require("../../utils/itemStore");
-const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
+import { SlashCommandBuilder } from "discord.js";
+import { CASINO_MAX_BET, CASINO_MIN_BET } from "../../config.js";
+import { logAudit } from "../../utils/audit.js";
+import { fmt, getUser, recordGame } from "../../utils/economy.js";
+import embed from "../../utils/embed.js";
+import { getChickenPower } from "../../utils/itemstore.js";
 
 function getChickenInventory(user) {
 	return [...(user.inventory || [])]
@@ -136,7 +136,7 @@ const run = async ({ userId, guildId, query, bet, reply }) => {
 	});
 };
 
-module.exports = {
+export default {
 	name: "cockfight",
 	aliases: ["pitfight", "rooster"],
 	description:
@@ -166,7 +166,9 @@ module.exports = {
 	async execute({ message, args }) {
 		const lastArg = args[args.length - 1];
 		const bet = parseInt(lastArg, 10);
-		const query = Number.isNaN(bet) ? args.join(" ") : args.slice(0, -1).join(" ");
+		const query = Number.isNaN(bet)
+			? args.join(" ")
+			: args.slice(0, -1).join(" ");
 		return run({
 			userId: message.author.id,
 			guildId: message.guild.id,
