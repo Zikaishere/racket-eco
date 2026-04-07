@@ -25,7 +25,7 @@ module.exports = {
 				message.channel,
 				prefix || currentGuildData.prefix || DEFAULT_PREFIX,
 			);
-		} catch (error) {
+		} catch (_error) {
 			return message.reply({
 				embeds: [
 					embed.error(
@@ -52,7 +52,7 @@ module.exports = {
 				interaction.channel,
 				currentGuildData.prefix || DEFAULT_PREFIX,
 			);
-		} catch (error) {
+		} catch (_error) {
 			return interaction.reply({
 				embeds: [
 					embed.error(

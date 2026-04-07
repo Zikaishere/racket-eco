@@ -165,7 +165,7 @@ module.exports = {
 	async handleNav(interaction) {
 		const selected = interaction.values[0];
 		const user = await getUser(interaction.user.id, interaction.guild.id);
-		let lobbyEmbed;
+		let lobbyEmbed: ReturnType<typeof embed.info> | null = null;
 
 		if (selected === "lobby") {
 			lobbyEmbed = buildLobbyEmbed(user, interaction.guild.id);
@@ -174,7 +174,7 @@ module.exports = {
 				.raw(0x2dc653)
 				.setTitle("Casino Cashier")
 				.setDescription(
-					'"Looking to buy chips or cash out?"\n\n- **Buy Chips**: \`/cashier buy <amount>\`\n- **Cash Out**: \`/cashier cashout <amount>\`\n\nCashouts above 5,000 chips are taxed unless you try to evade it.',
+					'"Looking to buy chips or cash out?"\n\n- **Buy Chips**: `/cashier buy <amount>`\n- **Cash Out**: `/cashier cashout <amount>`\n\nCashouts above 5,000 chips are taxed unless you try to evade it.',
 				);
 		} else if (selected === "tables") {
 			lobbyEmbed = buildTablesEmbed(interaction.guild.id);
@@ -183,7 +183,7 @@ module.exports = {
 				.raw(0xffb703)
 				.setTitle("Slots and Arcade Area")
 				.setDescription(
-					"Flashing lights and bad decisions everywhere.\n\n- **Slots**: \`/slots <bet>\`\n- **Vault Crack**: \`/vault <bet>\`",
+					"Flashing lights and bad decisions everywhere.\n\n- **Slots**: `/slots <bet>`\n- **Vault Crack**: `/vault <bet>`",
 				);
 		} else if (selected === "vip") {
 			if (!["VIP", "Whale"].includes(user.casinoRank)) {

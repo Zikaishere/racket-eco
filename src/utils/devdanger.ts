@@ -1,4 +1,4 @@
-const crypto = require("crypto");
+const crypto = require("node:crypto");
 
 const pendingDbWipes = new Map();
 const CONFIRMATION_WINDOW_MS = 2 * 60 * 1000;

@@ -31,7 +31,7 @@ const run = async ({ userId, guildId, action, rawAmount, evade, reply }) => {
 				? user.balance
 				: parseInt(rawAmount, 10);
 
-		if (isNaN(amount) || amount <= 0)
+		if (Number.isNaN(amount) || amount <= 0)
 			return reply({
 				embeds: [embed.error("Please specify a valid amount.")],
 				ephemeral: true,
@@ -75,7 +75,7 @@ const run = async ({ userId, guildId, action, rawAmount, evade, reply }) => {
 				? user.chips
 				: parseInt(rawAmount, 10);
 
-		if (isNaN(amount) || amount <= 0)
+		if (Number.isNaN(amount) || amount <= 0)
 			return reply({
 				embeds: [embed.error("Please specify a valid amount.")],
 				ephemeral: true,

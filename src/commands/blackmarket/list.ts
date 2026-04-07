@@ -53,14 +53,14 @@ const run = async ({
 		});
 	}
 
-	if (isNaN(price) || price <= 0) {
+	if (Number.isNaN(price) || price <= 0) {
 		return reply({
 			embeds: [embed.error("Please enter a valid price.")],
 			ephemeral: true,
 		});
 	}
 
-	if (isNaN(quantity) || quantity <= 0 || quantity > 99) {
+	if (Number.isNaN(quantity) || quantity <= 0 || quantity > 99) {
 		return reply({
 			embeds: [embed.error("Quantity must be between 1 and 99.")],
 			ephemeral: true,

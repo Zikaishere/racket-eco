@@ -28,7 +28,7 @@ function buildButtons(takeValue, disabled = false) {
 }
 
 const run = async ({ userId, guildId, username, bet, reply }) => {
-	if (isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
+	if (Number.isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(

@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
 const embed = require("../../utils/embed");
-const { getUser } = require("../../utils/economy");
 const Crew = require("../../models/Crew");
 const { logAudit } = require("../../utils/audit");
 
@@ -164,7 +163,7 @@ module.exports = {
 				embeds: [
 					embed.success(
 						"Crew Invite Sent",
-						`<@${target.id}> can now join **${crew.name}** with \.crew join ${crew.name}`,
+						`<@${target.id}> can now join **${crew.name}** with .crew join ${crew.name}`,
 					),
 				],
 			});

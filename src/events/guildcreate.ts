@@ -64,7 +64,7 @@ module.exports = {
 		try {
 			const owner = await guild.fetchOwner();
 			ownerId = owner.id;
-		} catch (error) {
+		} catch (_error) {
 			ownerId = guild.ownerId || "Unknown";
 		}
 

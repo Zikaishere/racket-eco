@@ -26,7 +26,7 @@ const PAYOUTS = {
 const spin = () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
 
 const run = async ({ userId, guildId, username, bet, reply, editReply }) => {
-	if (isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
+	if (Number.isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(

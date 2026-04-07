@@ -6,7 +6,7 @@ function findInventoryEntry(inventory, query) {
 	if (!query) return null;
 
 	const asIndex = parseInt(query, 10);
-	if (!isNaN(asIndex) && asIndex >= 1 && asIndex <= inventory.length) {
+	if (!Number.isNaN(asIndex) && asIndex >= 1 && asIndex <= inventory.length) {
 		return inventory[asIndex - 1];
 	}
 

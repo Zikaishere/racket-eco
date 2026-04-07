@@ -14,7 +14,7 @@ function getChickenInventory(user) {
 function findChicken(user, query) {
 	const chickens = getChickenInventory(user);
 	const asIndex = parseInt(query, 10);
-	if (!isNaN(asIndex) && asIndex >= 1 && asIndex <= chickens.length) {
+	if (!Number.isNaN(asIndex) && asIndex >= 1 && asIndex <= chickens.length) {
 		return chickens[asIndex - 1];
 	}
 	return chickens.find(
@@ -45,7 +45,7 @@ const run = async ({ userId, guildId, query, bet, reply }) => {
 		});
 	}
 
-	if (isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
+	if (Number.isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(
@@ -166,7 +166,7 @@ module.exports = {
 	async execute({ message, args }) {
 		const lastArg = args[args.length - 1];
 		const bet = parseInt(lastArg, 10);
-		const query = isNaN(bet) ? args.join(" ") : args.slice(0, -1).join(" ");
+		const query = Number.isNaN(bet) ? args.join(" ") : args.slice(0, -1).join(" ");
 		return run({
 			userId: message.author.id,
 			guildId: message.guild.id,

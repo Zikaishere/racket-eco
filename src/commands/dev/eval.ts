@@ -1,4 +1,4 @@
-const util = require("util");
+const util = require("node:util");
 const embed = require("../../utils/embed");
 
 function sanitizeOutput(value) {
@@ -29,7 +29,7 @@ module.exports = {
 	category: "dev",
 	devOnly: true,
 
-	async execute({ message, args, client }) {
+	async execute({ message, args, _client }) {
 		const code = args.join(" ").trim();
 		if (!code) {
 			return message.reply({
@@ -38,11 +38,13 @@ module.exports = {
 		}
 
 		try {
-			let result;
+			let result: unknown;
 			try {
+				// biome-ignore lint/security/noGlobalEval: Dev-only eval command
 				result = await eval(`(async () => (${code}))()`);
 			} catch (e) {
 				console.log("Expression eval failed:", e.message);
+				// biome-ignore lint/security/noGlobalEval: Dev-only eval command
 				result = await eval(`(async () => { return ${code} })()`);
 			}
 			const output = sanitizeOutput(result);

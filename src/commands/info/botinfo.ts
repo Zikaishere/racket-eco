@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const embed = require("../../utils/embed");
-const os = require("os");
+const os = require("node:os");
 
 module.exports = {
 	name: "botinfo",
@@ -29,7 +29,7 @@ async function run({ client, reply }) {
 	const secs = Math.floor(uptime % 60);
 
 	const memUsed = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1);
-	const memTotal = (os.totalmem() / 1024 / 1024 / 1024).toFixed(1);
+	const _memTotal = (os.totalmem() / 1024 / 1024 / 1024).toFixed(1);
 	const cpuModel = os.cpus()[0].model;
 
 	const e = embed

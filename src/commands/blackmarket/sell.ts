@@ -11,7 +11,7 @@ function getInventorySorted(user) {
 
 function findEntryIndex(inventory, query) {
 	const asIndex = parseInt(query, 10);
-	if (!isNaN(asIndex) && asIndex >= 1 && asIndex <= inventory.length) {
+	if (!Number.isNaN(asIndex) && asIndex >= 1 && asIndex <= inventory.length) {
 		return asIndex - 1;
 	}
 
@@ -126,8 +126,8 @@ module.exports = {
 	async execute({ message, args }) {
 		const lastArg = args[args.length - 1];
 		const parsedQuantity = parseInt(lastArg, 10);
-		const quantity = !isNaN(parsedQuantity) ? parsedQuantity : 1;
-		const query = !isNaN(parsedQuantity)
+		const quantity = !Number.isNaN(parsedQuantity) ? parsedQuantity : 1;
+		const query = !Number.isNaN(parsedQuantity)
 			? args.slice(0, -1).join(" ")
 			: args.join(" ");
 

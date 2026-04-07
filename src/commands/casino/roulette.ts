@@ -9,7 +9,7 @@ const {
 const { CASINO_MIN_BET, CASINO_MAX_BET } = require("../../config");
 
 const RED = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
-const BLACK = [
+const _BLACK = [
 	2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35,
 ];
 
@@ -123,7 +123,7 @@ const run = async ({
 }) => {
 	const normalizedBetType = String(betType).toLowerCase();
 	const isNumber =
-		!isNaN(normalizedBetType) &&
+		!Number.isNaN(normalizedBetType) &&
 		parseInt(normalizedBetType, 10) >= 0 &&
 		parseInt(normalizedBetType, 10) <= 36;
 	const isType = BET_TYPES[normalizedBetType];
@@ -139,7 +139,7 @@ const run = async ({
 		});
 	}
 
-	if (isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
+	if (Number.isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(

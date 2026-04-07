@@ -6,7 +6,6 @@ const {
 } = require("discord.js");
 const embed = require("../../utils/embed");
 const { getUser, fmt } = require("../../utils/economy");
-const User = require("../../models/User");
 const Crew = require("../../models/Crew");
 const {
 	reserveFunds,
@@ -18,7 +17,6 @@ const {
 	HEIST_JOIN_WINDOW,
 	HEIST_MIN_BET,
 	HEIST_MAX_BET,
-	HEIST_BASE_COOLDOWN,
 	WANTED_DURATION,
 } = require("../../config");
 
@@ -367,7 +365,7 @@ function getRoleBonuses(heist) {
 	return { counts, successBonus, crewSynergyBonus };
 }
 
-async function resolveHeist(guildId, client) {
+async function resolveHeist(guildId, _client) {
 	const heist = activeHeists.get(guildId);
 	if (!heist) return;
 	activeHeists.delete(guildId);
@@ -620,7 +618,7 @@ const run = async ({ userId, guildId, username, bet, reply, client }) => {
 		});
 	}
 
-	if (isNaN(bet) || bet < HEIST_MIN_BET || bet > HEIST_MAX_BET) {
+	if (Number.isNaN(bet) || bet < HEIST_MIN_BET || bet > HEIST_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(

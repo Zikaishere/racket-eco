@@ -9,7 +9,7 @@ const run = async ({ fromId, toId, toUser, guildId, amount, reply }) => {
 			embeds: [embed.error("You cannot pay yourself.")],
 			ephemeral: true,
 		});
-	if (isNaN(amount) || amount <= 0)
+	if (Number.isNaN(amount) || amount <= 0)
 		return reply({
 			embeds: [embed.error("Please enter a valid amount.")],
 			ephemeral: true,

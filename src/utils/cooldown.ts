@@ -1,5 +1,3 @@
-const ms = require("ms");
-
 // In-memory cooldown store for commands (not economy cooldowns — those are in DB)
 const cooldowns = new Map();
 

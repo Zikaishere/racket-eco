@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const embed = require("../../utils/embed");
-const { deposit, getUser, fmt } = require("../../utils/economy");
+const { withdraw, getUser, fmt } = require("../../utils/economy");
 const { logAudit } = require("../../utils/audit");
 
 const run = async ({ userId, guildId, rawAmount, reply }) => {
@@ -8,20 +8,20 @@ const run = async ({ userId, guildId, rawAmount, reply }) => {
 	const normalized = String(rawAmount).toLowerCase();
 	const amount =
 		normalized === "all" || normalized === "max"
-			? user.balance
+			? user.bank
 			: parseInt(rawAmount, 10);
 
-	if (isNaN(amount) || amount <= 0) {
+	if (Number.isNaN(amount) || amount <= 0) {
 		return reply({
-			embeds: [embed.error("Please specify a valid amount to deposit.")],
+			embeds: [embed.error("Please specify a valid amount to withdraw.")],
 			ephemeral: true,
 		});
 	}
 
-	const success = await deposit(userId, guildId, amount);
+	const success = await withdraw(userId, guildId, amount);
 	if (!success) {
 		return reply({
-			embeds: [embed.error("You don't have enough raqs in your wallet.")],
+			embeds: [embed.error("You don't have enough raqs in your bank.")],
 			ephemeral: true,
 		});
 	}
@@ -31,31 +31,31 @@ const run = async ({ userId, guildId, rawAmount, reply }) => {
 		guildId,
 		actorId: userId,
 		targetId: userId,
-		action: "bank_deposit",
+		action: "bank_withdraw",
 		amount,
 		currency: "wallet",
 	});
 	return reply({
 		embeds: [
 			embed.success(
-				"Deposit Successful",
-				`You deposited ${fmt(amount)} into your bank.\n\n**Wallet:** ${fmt(updated.balance)}\n**Bank:** ${fmt(updated.bank)}`,
+				"Withdrawal Successful",
+				`You withdrew ${fmt(amount)} from your bank.\n\n**Wallet:** ${fmt(updated.balance)}\n**Bank:** ${fmt(updated.bank)}`,
 			),
 		],
 	});
 };
 
 module.exports = {
-	name: "deposit",
-	aliases: ["dep"],
-	description: "Deposit raqs into your bank account.",
+	name: "withdraw",
+	aliases: ["with"],
+	description: "Withdraw raqs from your bank account.",
 	usage: "<amount|all>",
 	category: "economy",
 	guildOnly: true,
 
 	slash: new SlashCommandBuilder()
-		.setName("deposit")
-		.setDescription("Deposit raqs into your bank account")
+		.setName("withdraw")
+		.setDescription("Withdraw raqs from your bank account")
 		.addStringOption((o) =>
 			o.setName("amount").setDescription('Amount or "all"').setRequired(true),
 		),
@@ -63,7 +63,7 @@ module.exports = {
 	async execute({ message, args }) {
 		if (!args[0])
 			return message.reply({
-				embeds: [embed.error("Usage: `.deposit <amount|all>`")],
+				embeds: [embed.error("Usage: `.withdraw <amount|all>`")],
 			});
 		return run({
 			userId: message.author.id,

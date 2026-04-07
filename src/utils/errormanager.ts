@@ -1,4 +1,4 @@
-const crypto = require("crypto");
+const crypto = require("node:crypto");
 const embed = require("./embed");
 const ErrorLog = require("../models/ErrorLog");
 const { DEV_LOG_CHANNEL_ID } = require("../config");

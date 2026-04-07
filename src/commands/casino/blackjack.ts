@@ -232,7 +232,7 @@ const finishGame = async (interaction, table) => {
 	});
 };
 
-const runBotTurn = async (interaction, table) => {
+const runBotTurn = async (_interaction, table) => {
 	const bot = table.players[table.currentPlayerIndex];
 	if (!bot?.isBot) return false;
 
@@ -273,7 +273,7 @@ const nextTurn = async (interaction, table) => {
 };
 
 const run = async ({ userId, guildId, username, bet, reply }) => {
-	if (isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
+	if (Number.isNaN(bet) || bet < CASINO_MIN_BET || bet > CASINO_MAX_BET) {
 		return reply({
 			embeds: [
 				embed.error(
